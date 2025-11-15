@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classificador de Dia da Semana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 320px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 60px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Classificador de Dia da Semana</h1>
+    <input type="number" id="numero" placeholder="1 a 7" min="1" max="7">
+    <br>
+    <button onclick="verificarDia()">Verificar</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function nomeDoDia(numero) {
+      switch (numero) {
+        case 1:
+          return "Domingo";
+        case 2:
+          return "Segunda";
+        case 3:
+          return "Terça";
+        case 4:
+          return "Quarta";
+        case 5:
+          return "Quinta";
+        case 6:
+          return "Sexta";
+        case 7:
+          return "Sábado";
+        default:
+          return "Número inválido! Digite um valor de 1 a 7.";
+      }
+    }
+
+    function verificarDia() {
+      const numero = parseInt(document.getElementById("numero").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(numero)) {
+        resultado.textContent = "Por favor, insira um número de 1 a 7.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      const dia = nomeDoDia(numero);
+      resultado.textContent = dia;
+      resultado.style.color = dia.includes("inválido") ? "red" : "#007bff";
+    }
+  </script>
+
+</body>
+</html>

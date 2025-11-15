@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Senha Forte</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    input {
+      padding: 8px;
+      width: 90%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Verificador de Senha Forte</h1>
+    <input type="password" id="senha" placeholder="Digite sua senha">
+    <br>
+    <button onclick="verificarSenha()">Verificar</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function senhaForte(senha) {
+      if (senha.length > 8 && senha !== "12345678") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function verificarSenha() {
+      const senha = document.getElementById("senha").value;
+      const resultado = document.getElementById("resultado");
+
+      if (senhaForte(senha)) {
+        resultado.textContent = "✅ Senha forte!";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "❌ Senha fraca (mín. 9 caracteres e diferente de 12345678)";
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formatador de Telefone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f3f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 80%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Formatador de Telefone</h1>
+    <input type="text" id="telefone" maxlength="8" placeholder="Digite 8 números (ex: 99887766)">
+    <br>
+    <button onclick="formatar()">Formatar</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function formatarTelefone(numero) {
+      const parte1 = numero.slice(0, 4);
+      const parte2 = numero.slice(4);
+      return parte1 + "-" + parte2;
+    }
+
+    function formatar() {
+      const telefone = document.getElementById("telefone").value.trim();
+      const resultado = document.getElementById("resultado");
+
+      if (telefone.length !== 8 || isNaN(telefone)) {
+        resultado.textContent = "Por favor, digite exatamente 8 números.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      const formatado = formatarTelefone(telefone);
+      resultado.textContent = "Telefone formatado: " + formatado;
+      resultado.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

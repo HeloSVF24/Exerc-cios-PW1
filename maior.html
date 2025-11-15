@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maior entre Três Números</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    input {
+      width: 60px;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Maior entre Três Números</h1>
+    <input type="number" id="num1" placeholder="1º">
+    <input type="number" id="num2" placeholder="2º">
+    <input type="number" id="num3" placeholder="3º">
+    <br>
+    <button onclick="verificarMaior()">Verificar Maior</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function encontrarMaiorEntreTres(a, b, c) {
+      if (a > b && a > c) {
+        return a + " é o maior número";
+      } else if (b > a && b > c) {
+        return b + " é o maior número";
+      } else if (c > a && c > b) {
+        return c + " é o maior número";
+      } else {
+        return "Os números são iguais ou há empate";
+      }
+    }
+
+    function verificarMaior() {
+      const a = Number(document.getElementById("num1").value);
+      const b = Number(document.getElementById("num2").value);
+      const c = Number(document.getElementById("num3").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        resultado.textContent = "Por favor, preencha todos os campos.";
+        resultado.style.color = "red";
+      } else {
+        resultado.textContent = encontrarMaiorEntreTres(a, b, c);
+        resultado.style.color = "#007bff";
+      }
+    }
+  </script>
+
+</body>
+</html>
